@@ -15,6 +15,8 @@ try:
 except ImportError:
     import configparser
 
+import warnings
+
 from niftynet.engine.application_factory import ApplicationFactory
 from niftynet.engine.application_factory import SUPPORTED_APP
 from niftynet.io.misc_io import resolve_file_name
@@ -119,10 +121,11 @@ def run():
     config.read([config_file_name])
 
     if os.path.splitext(config_file_name)[1].lower() == '.ini':
-        raise DeprecationWarning(
+        warnings.warn(
             'INI configuration files are deprecated in favor of'
             ' YAML configuration files. Support for INI configuration'
-            ' files will be dropped in a future release.'
+            ' files will be dropped in a future release.',
+            DeprecationWarning
         )
 
     # infer application name from command
