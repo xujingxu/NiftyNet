@@ -8,14 +8,13 @@ from __future__ import print_function
 
 import argparse
 import os
+import warnings
 import textwrap
 
 try:
     import ConfigParser as configparser
 except ImportError:
     import configparser
-
-import warnings
 
 from niftynet.engine.application_factory import ApplicationFactory
 from niftynet.engine.application_factory import SUPPORTED_APP
